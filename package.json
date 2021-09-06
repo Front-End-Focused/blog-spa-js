@@ -6,6 +6,13 @@
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development webpack serve"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Front-End-Focused/blog-spa-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Front-End-Focused/blog-spa-js/issues"
+  },
   "author": "Mahmoud Elmahdi",
   "license": "MIT",
   "devDependencies": {
