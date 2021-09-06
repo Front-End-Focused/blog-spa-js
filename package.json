@@ -1,0 +1,19 @@
+{
+  "name": "blog-spa-js",
+  "version": "1.0.0",
+  "description": "Blog Spa - Vanilla JavaScript",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack serve"
+  },
+  "author": "Mahmoud Elmahdi",
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^5.3.2",
+    "prettier": "2.3.2",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0"
+  }
+}
