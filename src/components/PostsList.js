@@ -1,33 +1,13 @@
 import Component from './Component';
 import { parseAndRender } from '../utils';
+import wrapperPost from './WrapperPost';
 
 export default class PostsList extends Component {
-  createMarkupTemplate({ title, body, id }) {
-    return `
-        <article class="post" id="post-${id}">
-            <h3 class="text-capitalize">${title}</h3>
-            <div class="row">
-                <p class="col-10 text-truncate">
-                    ${body}
-                </p>
-            </div>
-            <a href="#post/${id}" class="btn btn-dark">Read more &raquo;</a>
-            <hr />
-        </article>
-        `;
-  }
-
-  fetchPosts() {
+ fetchPosts() {
     const { data } = this.state;
-
     return data
       .map(({ title, body, id }) =>
-        this.createMarkupTemplate({
-          title,
-          body,
-          id,
-        })
-      )
+        wrapperPost(title, body, id))
       .join('');
   }
 
@@ -35,3 +15,7 @@ export default class PostsList extends Component {
     return parseAndRender(this.rootElement, this.fetchPosts());
   }
 }
+
+
+/// DRY убрать посты, которые у автора и на первой странице
+/// many requests .... нужно задать проверку, если у нас есть данные в стейте от предыдущего запроса, то возьми, если нет то делай запрос

@@ -1,26 +1,16 @@
 import Component from './Component';
 import { AvatarIcon } from './Icons';
+import wrapperPost from './WrapperPost';
+
 
 export default class AuthorPage extends Component {
   renderPostsSection() {
-    const { posts } = this.state;
+    const {posts} = this.state;
     if (!posts.length) return;
-
     const data = posts
       .map(
         ({ title, body, id }) =>
-          `
-            <article class="post" id="post-${id}">
-                <h3 class="text-capitalize">${title}</h3>
-                <div class="row">
-                    <p class="col-10 text-truncate">
-                        ${body}
-                    </p>
-                </div>
-                <a href="#post/${id}" class="btn btn-dark">Read more &raquo;</a>
-                <hr />
-            </article>
-            `
+        wrapperPost(title, body, id)
       )
       .join('');
 
@@ -33,8 +23,8 @@ export default class AuthorPage extends Component {
   }
 
   createMarkupTemplate() {
-    const { name, phone, website, company, email, address } = this.state;
-
+    const { name, phone, website, company, email, address, photos } = this.state;
+    
     return `
       <main>
           <section class="d-flex mt-5 mb-5">
@@ -49,6 +39,9 @@ export default class AuthorPage extends Component {
               <p>${email}</p>
               <p>${phone}</p>
               <p>${address.street}, ${address.city}, ${address.zipcode}</p>
+          </div>
+          <div class="flex-grow-1 ms-3">
+              <img src='${photos.url}' alt = '${photos.title}'  width = '200'/>
           </div>
           </section>
           <hr />
