@@ -16,6 +16,9 @@ const API = {
   users: {
     getById: (id) => request(`users/${id}`),
   },
+  albums: {
+    getPhotosById: () => request('albums/1/photos'),
+  },
 };
 
 export default API;
