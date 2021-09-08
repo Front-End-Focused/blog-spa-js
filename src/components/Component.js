@@ -2,7 +2,7 @@ export default class Component {
   rootElement = document.getElementById('root');
   state = {};
 
-  render() {}
+  render() { }
 
   initialize(...args) {
     const [props] = args;

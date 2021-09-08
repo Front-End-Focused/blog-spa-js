@@ -1,5 +1,6 @@
 import Component from './Component';
 import { AvatarIcon } from './Icons';
+import { createMarkupTemplatePosts } from './CreateMarkupTemplatePosts';
 
 export default class AuthorPage extends Component {
   renderPostsSection() {
@@ -9,18 +10,11 @@ export default class AuthorPage extends Component {
     const data = posts
       .map(
         ({ title, body, id }) =>
-          `
-            <article class="post" id="post-${id}">
-                <h3 class="text-capitalize">${title}</h3>
-                <div class="row">
-                    <p class="col-10 text-truncate">
-                        ${body}
-                    </p>
-                </div>
-                <a href="#post/${id}" class="btn btn-dark">Read more &raquo;</a>
-                <hr />
-            </article>
-            `
+          createMarkupTemplatePosts({
+            title,
+            body,
+            id,
+          })
       )
       .join('');
 
@@ -32,7 +26,15 @@ export default class AuthorPage extends Component {
         `;
   }
 
-  createMarkupTemplate() {
+  renderImage() {
+    const { photo } = this.state;
+    return ` 
+     <div class="flex-grow-1 ms-3">
+        <img width="200" src="${photo.url}" alt="${photo.title}"/>
+    </div>`
+  }
+
+  createMarkupTemplateAutor() {
     const { name, phone, website, company, email, address } = this.state;
 
     return `
@@ -50,6 +52,7 @@ export default class AuthorPage extends Component {
               <p>${phone}</p>
               <p>${address.street}, ${address.city}, ${address.zipcode}</p>
           </div>
+        ${this.renderImage()}
           </section>
           <hr />
           ${this.renderPostsSection()}
@@ -58,6 +61,6 @@ export default class AuthorPage extends Component {
   }
 
   render() {
-    this.rootElement.innerHTML = this.createMarkupTemplate();
+    this.rootElement.innerHTML = this.createMarkupTemplateAutor();
   }
 }
