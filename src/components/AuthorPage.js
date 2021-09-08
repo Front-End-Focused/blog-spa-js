@@ -1,5 +1,6 @@
 import Component from './Component';
 import { AvatarIcon } from './Icons';
+import { createMarkupTemplatePosts } from './CreateMarkupTemplatePosts';
 
 export default class AuthorPage extends Component {
   renderPostsSection() {
@@ -9,7 +10,7 @@ export default class AuthorPage extends Component {
     const data = posts
       .map(
         ({ title, body, id }) =>
-          this.createMarkupTemplatePosts({
+          createMarkupTemplatePosts({
             title,
             body,
             id,

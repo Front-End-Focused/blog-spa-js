@@ -1,5 +1,6 @@
 import Component from './Component';
 import { parseAndRender } from '../utils';
+import { createMarkupTemplatePosts } from './CreateMarkupTemplatePosts';
 
 export default class PostsList extends Component {
 
@@ -8,7 +9,7 @@ export default class PostsList extends Component {
 
     return data
       .map(({ title, body, id }) =>
-        this.createMarkupTemplatePosts({
+        createMarkupTemplatePosts({
           title,
           body,
           id,
